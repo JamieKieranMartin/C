@@ -27,7 +27,9 @@ void word_count() {
 
         if (ch1 == '\n') {
             line_count++;
-        } else if (isspace(prev_char) && !isspace(ch1)) {
+        }
+        
+        if (isspace(prev_char) && !isspace(ch1)) {
             count++;
         }
 
