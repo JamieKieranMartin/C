@@ -2,43 +2,28 @@
 #include <ctype.h>
 
 void word_count() {
-    //  Declare an integer variable which will be used to count characters.
-    //  Initialise the variable to zero.
+    int chars = 0, words = 0, lines = 0;
+    char curr, prev;
 
-    //  Enter a loop which continues indefinitely.
-            // Read a single character code from standard input.
+    do {
+        curr = getc(stdin);
 
-        // If the character code is equal to EOF, break out of the loop.
+        if (curr != EOF) {
+            chars++;
+            if ( curr == '\n') lines++;
 
-        // Increment the counter by 1.
-    // End the body of the loop.
+            if (chars > 1) {
+                if (!isspace(curr)) {
+                    if (prev == ' ' || prev == '\n') words++;
+                }
+            } else if (curr == '\n') words = 0;
 
-    // Display the number of characters processed.
-    int char_count = 0;
-    int count = 1;
-    int line_count = 0;
-    char prev_char;
-    while (1 == 1) {
-        char ch1 = getchar();
-    
-        if (ch1 == EOF) {
-            break;
-        }
+            prev = curr;
+        }   else if (!isspace(prev)) words++;
+    } while (curr != EOF);
 
-        if (ch1 == '\n') {
-            line_count++;
-        }
-        
-        if (isspace(prev_char) && !isspace(ch1)) {
-            count++;
-        }
-
-        prev_char = ch1;
-        char_count++;
-    }
-    printf("The document contains %d lines, %d words, and %d characters.\n", line_count, count, char_count);
+    printf("The document contains %d lines, %d words, and %d characters.\n", lines, words, chars);
 }
-
 
 int main() {
 	word_count();
