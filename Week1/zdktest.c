@@ -1,9 +1,11 @@
-#include <cab202_graphics.h>
+#include "cab202_graphics.h"
 
 int main() {
     setup_screen();
-    //the drawing part of your code goes here
-    draw_string(10, 20, "Hello World!");
+    
+    draw_string(0, 0, "Hello World!");
+    show_screen();
+    while(getchar());
     cleanup_screen();
     return 0;
 }
