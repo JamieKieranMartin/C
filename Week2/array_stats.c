@@ -34,11 +34,15 @@ void array_stats() {
     list_mean = list_mean / list_size;
 
     if (isnan(list_mean)) {
-        list_mean = 0.000000;
+        list_mean = 0;
+    }
+
+    if (list_max == DBL_MIN) {
+        list_max = 0;
     }
 
     if (list_min == DBL_MAX) {
-        list_min = 0.000000;
+        list_min = 0;
     }
 }
 
