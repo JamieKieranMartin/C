@@ -22,7 +22,6 @@
 
 bool position_read ( int *pos_1, int *pos_2 )
 {   
-    
     //  (Task 1.1) Display prompt:
     //  "Please enter two integer values, separated by spaces:".
     printf("Please enter two integer values, separated by spaces:");
@@ -34,7 +33,7 @@ bool position_read ( int *pos_1, int *pos_2 )
     int items_read[2];
     items_read[0] = *pos_1;
     items_read[1] = *pos_2;
-    printf("%d %d\n", items_read[0], items_read[1]);
+    printf("%d %d\n", items_read[0] + items_read[1]);
     //  (Task 1.3) Return true if and only if items_read is equal to 2.
     if (items_read[0] + items_read[1] == 2) {
         return true;
