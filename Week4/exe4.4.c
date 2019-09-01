@@ -77,7 +77,7 @@ int main(int argc, char *argv[])
 
     for (int i = 1; i < argc; i++) 
     {
-        FILE * stream = fopen(argv[i], "r");
+        FILE *stream = fopen(argv[i], "r");
         if (stream != NULL)
         {
             show_file(stream);
