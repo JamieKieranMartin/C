@@ -222,19 +222,20 @@ void update_F() {
                 if (scrape_char(F_x + 1, F_y) == WALL)      F_x = F_y = -1;
                 else F_x++;
             }
-            // if the difference is less than 0, meaning F is to the right of T
+            // if the difference is greater than 0, meaning F is to the right of T
             else if (x_diff > 0) {
                 // only move left if the new x is not a wall, otherwise destory F
                 if (scrape_char(F_x - 1, F_y) == WALL)       F_x = F_y = -1;
                 else F_x--;
             }
+            
             // if the difference is less than 0, meaning F is below T
             if (y_diff < 0) {
                 // only move down if the new x is not a wall, otherwise destory F
                 if (scrape_char(F_x, F_y + 1) == WALL)      F_x = F_y = -1;
                 else F_y++;
             } 
-            // if the difference is less than 0, meaning F is above T
+            // if the difference is greater than 0, meaning F is above T
             else if (y_diff > 0) {
                 // only move up if the new x is not a wall, otherwise destory F
                 if (scrape_char(F_x, F_y - 1) == WALL)      F_x = F_y = -1;
