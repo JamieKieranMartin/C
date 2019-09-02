@@ -218,26 +218,26 @@ void update_F() {
         if (milliseconds == 200 || milliseconds == 400 || milliseconds == 600 || milliseconds == 800 || milliseconds == 1000) {
             // if the difference is less than 0, meaning F is to the left of T
             if (x_diff < 0) {
-                // only move right if the new x is within the border and not a wall, otherwise destory F
-                if (scrape_char(F_x + 1, F_y) == WALL || F_x + 1 == W)      F_x = F_y = -1;
+                // only move right if the new x is not a wall, otherwise destory F
+                if (scrape_char(F_x + 1, F_y) == WALL)      F_x = F_y = -1;
                 else F_x++;
             }
             // if the difference is less than 0, meaning F is to the right of T
             else if (x_diff > 0) {
-                // only move left if the new x is within the border and not a wall, otherwise destory F
-                if (scrape_char(F_x - 1, F_y) == WALL || F_x - 1 < 0)       F_x = F_y = -1;
+                // only move left if the new x is not a wall, otherwise destory F
+                if (scrape_char(F_x - 1, F_y) == WALL)       F_x = F_y = -1;
                 else F_x--;
             }
             // if the difference is less than 0, meaning F is below T
             if (y_diff < 0) {
-                // only move down if the new x is within the border and not a wall, otherwise destory F
-                if (scrape_char(F_x, F_y + 1) == WALL || F_y + 1 == H)      F_x = F_y = -1;
+                // only move down if the new x is not a wall, otherwise destory F
+                if (scrape_char(F_x, F_y + 1) == WALL)      F_x = F_y = -1;
                 else F_y++;
             } 
             // if the difference is less than 0, meaning F is above T
             else if (y_diff > 0) {
-                // only move up if the new x is within the border and not a wall, otherwise destory F
-                if (scrape_char(F_x, F_y - 1) != WALL || F_x - 1 == 4)      F_x = F_y = -1;
+                // only move up if the new x is not a wall, otherwise destory F
+                if (scrape_char(F_x, F_y - 1) == WALL)      F_x = F_y = -1;
                 else F_y--;
             }
         }
@@ -449,6 +449,12 @@ void loop() {
     if (key == 'f') {
         F_x = J_x, F_y = J_y;
         weapon_count++;
+        return;
+    }
+
+    // if press l then prime next level
+    if (key == 'l') {
+        next_level = true;
         return;
     }
 
