@@ -12,7 +12,7 @@ void setupLed0( void ) {
     SET_BIT(DDRB, 2);
     //  (c) Turn off LED0 (and all other outputs connected to Port B) by 
     //  clearing all bits in the Port B output register.
-    CLEAR_BIT(PORTB, 2);
+    PORTB = 0b00000000;
 }
 
 void turnOnLed0( void ) {
