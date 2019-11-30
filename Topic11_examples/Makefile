@@ -5,7 +5,10 @@
 # Replace these targets with your target (hex file) name, including the .hex part.
 
 TARGETS = \
-	ass2.hex \
+	adc_led.hex \
+	adc_lcd.hex \
+	adc_pwm_led.hex \
+	adc_pwm_backlight.hex \
 
 
 # Set the name of the folder containing libcab202_teensy.a

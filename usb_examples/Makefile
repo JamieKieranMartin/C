@@ -1,12 +1,14 @@
-# Topic 11 Makefile (Preview)
+# Topic 10 Makefile (with USB Serial and UART)
 # Lawrence Buckingham, October  2017.
+# Latest revision: September 2019.
 # Queensland University of Technology.
 
 # Replace these targets with your target (hex file) name, including the .hex part.
 
 TARGETS = \
-	ass2.hex \
-
+	usb_serial_hello.hex \
+	usb_serial_echo.hex  \
+	usb_serial_led.hex \
 
 # Set the name of the folder containing libcab202_teensy.a
 CAB202_TEENSY_FOLDER=../cab202_teensy
@@ -16,8 +18,8 @@ USB_SERIAL_FOLDER =../usb_serial
 USB_SERIAL_OBJ =$(USB_SERIAL_FOLDER)/usb_serial.o
 
 # Set the name of the folder containing uart.o
-ADC_FOLDER =../cab202_adc
-ADC_OBJ =$(ADC_FOLDER)/cab202_adc.o
+UART_FOLDER =../uart
+UART_OBJ =$(UART_FOLDER)/uart.o
 
 # ---------------------------------------------------------------------------
 #	Leave the rest of the file alone.
@@ -25,10 +27,11 @@ ADC_OBJ =$(ADC_FOLDER)/cab202_adc.o
 
 all: $(TARGETS)
 
-TEENSY_LIBS = $(USB_SERIAL_OBJ) $(ADC_OBJ) -lcab202_teensy -lprintf_flt -lm 
+TEENSY_LIBS = $(USB_SERIAL_OBJ) $(UART_OBJ) -lcab202_teensy -lprintf_flt -lm 
 
-TEENSY_DIRS =-I$(CAB202_TEENSY_FOLDER) -L$(CAB202_TEENSY_FOLDER) \
-	-I$(USB_SERIAL_FOLDER) -I$(ADC_FOLDER) 
+TEENSY_DIRS =-I$(CAB202_TEENSY_FOLDER) \
+	-I$(USB_SERIAL_FOLDER) -L$(CAB202_TEENSY_FOLDER) \
+	-I$(UART_FOLDER) -L$(UART_FOLDER)
 
 TEENSY_FLAGS = \
 	-std=gnu99 \
